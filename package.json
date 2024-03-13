@@ -1,0 +1,24 @@
+{
+  "name": "earthwise",
+  "version": "1.0.0",
+  "description": "EarthWise is a revolutionary mobile application designed to empower users with the knowledge and tools to make a positive impact on the environment. With a focus on raising awareness and fostering a culture of care for our planet,\r EarthWise provides users with valuable information, actionable tips, and engaging content to inspire sustainable living practices.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon backend/index.js",
+    "start": "node backend/index.js",
+    "build": "npm install && npm install --prefix client && npm run build --prefix client"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.1",
+    "nodemon": "^3.1.0"
+  }
+}
