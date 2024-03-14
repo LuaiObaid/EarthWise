@@ -26,9 +26,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}!`);
 });
 
-// chatgpt key  put it in .env file 
-// OPENAI_API_KEY=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
-// OPENAI_ORGANIZATION=org-qgPLtBaASUYECOcfP5GUMBNb
+
 
 /*app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
