@@ -2,8 +2,15 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 //import userRouter from './routes/user.route.js';
-//import authRouter from './routes/auth.route.js';
+import authRouter from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
+
+// Old (OpenAI Node.js SDK v3)
+import OpenAI from 'openai';
+
+
+
+
 //import path from 'path'
 
 dotenv.config();
@@ -22,10 +29,46 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cookieParser());
 
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+app.post("/find-com", async (req, res) => {
+  const prompt = "tell me a joke about cat eating pasta"
+  try {
+    const aiRes = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages:[{"role":"user","content":"tell me how to wash me hands"}],
+     // prompt:prompt,
+      max_tokens: 2048,
+      //temperature: 1,
+     // top_p: 1.0,
+      //frequency_penalty: 0.0,
+      //presence_penalty: 0.0,
+      //stop: ["\n"],
+    });
+    console.log(aiRes.choices[0].message)
+  /*  return res.status(200).json({
+      success: true,
+      data: aiRes.data.choices[0].text
+    });*/
+  } catch (error) {
+    /*let errorMessage = "There was an issue on the server";
+    if (error.response && error.response.data && error.response.data.error && error.response.data.error.message) {
+      errorMessage = error.response.data.error.message;
+    }
+    return res.status(400).json({
+      success: false,
+      error: errorMessage
+    });*/
+    console.log(error)
+  }
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}!`);
 });
-
+app.use("/api/auth", authRouter);
 /*app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listingRouter);
