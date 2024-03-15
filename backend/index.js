@@ -12,6 +12,8 @@ import OpenAI from 'openai';
 
 
 //import path from 'path'
+// import axios from 'axios'
+
 
 dotenv.config();
 
@@ -29,6 +31,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cookieParser());
 
+<<<<<<< HEAD
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -64,11 +67,41 @@ app.post("/find-com", async (req, res) => {
   }
 });
 
+=======
+// app.post('/api/chat', async (req, res) => {
+//   const { message } = req.body;
+//   try {
+//     const response = await axios.post(
+//         '<https://api.openai.com/v1/chat/completions>',
+//         {
+//             model: "gpt-3.5-turbo",
+//             messages: [{role: "user", content: message}],
+//         },
+//         {
+//             headers: {
+//                 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+//                 'Content-Type': 'application/json'
+//             }
+//         }
+//     );
+//     res.json(response.data);
+// } catch (error) {
+//     console.error(error);
+//     res.status(500).send("Unable to communicate with OpenAI");
+// }
+// });
+>>>>>>> a06d4ff04df13eb0d6f7f3341f0004ac876bc014
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}!`);
 });
+<<<<<<< HEAD
 app.use("/api/auth", authRouter);
+=======
+
+
+
+>>>>>>> a06d4ff04df13eb0d6f7f3341f0004ac876bc014
 /*app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listingRouter);
