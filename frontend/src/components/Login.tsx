@@ -67,7 +67,7 @@ function SignUpForm() {
         type="submit" 
         className="px-40 py-4 rounded-2xl bg-amber-500"
       >
-        Sign Up
+        Login Up
       </button>
     </form>
   );
