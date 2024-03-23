@@ -26,13 +26,13 @@ mongoose.connect(process.env.MONGO)
   });
   //const __dirname = path.resolve();
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cookieParser());
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: "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",
 });
 app.post("/find-com", async (req, res) => {
   const prompt = "tell me a joke about cat eating pasta"
@@ -66,16 +66,21 @@ app.post("/find-com", async (req, res) => {
   }
 });
 
-
+app.get("/api/getuser", (req, res)=>{
+	try {
+		res.status(200).json("user: Luai oabid")
+	} catch (error) {
+		res.status(400).json(error.message)
+	}
+})
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}!`);
 });
 app.use("/api/auth", authRouter);
-/*app.use("/api/user", userRouter);
-app.use("/api/auth", authRouter);
-app.use("/api/listing", listingRouter);
+//app.use("/api/user", userRouter);
+//app.use("/api/listing", listingRouter);
 
-app.use(express.static(path.join(__dirname, 'client', 'dist')));
+/*app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
 
 app.get('*', (req, res) => {

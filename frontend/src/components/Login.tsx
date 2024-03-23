@@ -3,27 +3,24 @@ import axios from 'axios';
 
 function SignUpForm() {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+ 
     email: '',
     password: '',
-    confirmPassword: '',
-    //termsAccepted: false
+   
   });
 
   const handleChange = (event:any) => {
-    const { name, value, type, checked } = event.target;
+   const { name, value, type, checked } = event.target;
     setFormData(prevState => ({
       ...prevState,
       [name]: type === 'checkbox' ? checked : value
     }));
   };
-
   const handleSubmit = async (event:any) => {
     event.preventDefault();
     
     try {
-      const response = await axios.post('/api/auth/signup', formData);
+      const response = await axios.post('/api/auth/signin', formData);
       console.log('Response:', response.data);
       // Handle successful response
     } catch (error) {
@@ -34,25 +31,9 @@ function SignUpForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="flex gap-5">
-        <input
-          type="text"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-          placeholder="First Name"
-          className="w-52 p-2 rounded-md"
-        />
-        <input
-          type="text"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-          placeholder="Last Name"
-          className="w-52 p-2 rounded-md"
-        />
-      </div>
+      
       <input
+    
         type="email"
         name="email"
         value={formData.email}
@@ -69,15 +50,7 @@ function SignUpForm() {
         className="w-full p-2 rounded-md"
         required
       />
-      <input
-        type="password"
-        name="confirmPassword"
-        value={formData.confirmPassword}
-        onChange={handleChange}
-        placeholder="Confirm Password"
-        className="w-full p-2 rounded-md"
-        required
-      />
+      
       <div className="flex items-center justify-center gap-2">
        {/*<input
           type="checkbox"
