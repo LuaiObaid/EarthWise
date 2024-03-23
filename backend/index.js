@@ -32,7 +32,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 app.post("/find-com", async (req, res) => {
   const prompt = "tell me a joke about cat eating pasta"
