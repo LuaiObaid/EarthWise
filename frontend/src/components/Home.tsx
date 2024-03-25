@@ -1,4 +1,5 @@
 import SearchBar from "./SearchBar";
+ import Ai from './ai'
 const Home = () => {
   return (
     <>
@@ -38,6 +39,7 @@ const Home = () => {
         </div>
       </div>
       <SearchBar />
+      <Ai/>
     </>
   );
 };

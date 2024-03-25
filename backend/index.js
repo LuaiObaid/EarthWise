@@ -34,39 +34,40 @@ app.use(cookieParser());
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-});
-app.post("/find-com", async (req, res) => {
-  try {
-    // Extract the question from the request body
-    const question = req.body.question;
+})
 
-    // Check if the question is provided
-    if (!question) {
-      return res.status(400).json({ success: false, error: "Question is required" });
-    }
-
-    // Define the prompt using the question
-    const prompt = `Answer the following question: ${question}`;
-
-    // Make the API call to OpenAI with the dynamic prompt
-    const aiRes = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: question }], // Use the question as user input
-      prompt: prompt,
-      max_tokens: 2048,
-    });
-
-    // Extract the response from the API response
-    const response = aiRes.choices[0].message;
-
-    // Return the response to the client
-    return res.status(200).json({ success: true, response });
-  } catch (error) {
-    console.error("Error:", error);
-    return res.status(500).json({ success: false, error: "Internal server error" });
-  }
-});
-
+// app.post("/find-com", async (req, res) => {
+//  // const prompt = "tell me a joke about cat eating pasta"
+//  const  prompt = req.body.question
+//   try {
+//     const aiRes = await openai.chat.completions.create({
+//       model: "gpt-3.5-turbo",
+//       messages:[{"role":"user","content":prompt}],
+//      // prompt:prompt,
+//       max_tokens: 2048,
+//       //temperature: 1,
+//      // top_p: 1.0,
+//       //frequency_penalty: 0.0,
+//       //presence_penalty: 0.0,
+//       //stop: ["\n"],
+//     });
+//     console.log(aiRes.choices[0].message)
+//     return res.status(200).json({
+//       success: true,
+//       data: aiRes.choices[0].message
+//     });
+//   } catch (error) {
+//     /*let errorMessage = "There was an issue on the server";
+//     if (error.response && error.response.data && error.response.data.error && error.response.data.error.message) {
+//       errorMessage = error.response.data.error.message;
+//     }*/
+//     return res.status(400).json({
+//       success: false,
+//       error: errorMessage
+//     });
+    
+//   }
+// });
 
 app.get("/api/getuser", (req, res)=>{
 	try {
