@@ -2,7 +2,6 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
-import SearchBar from "./components/SearchBar";
 import Signup from "./components/Signup";
 import Home from "./components/Home";
 

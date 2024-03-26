@@ -40,11 +40,12 @@ function Login() {
   };
 
   return (
-    <div>
-      <h1 className="text-4xl font-bold text-center my-14 font-alegreya text-[#203824]">
-        Earthwise
+    <div className="flex flex-col justify-center items-center p-5">
+      <h1 className="text-xl md:text-2xl max-w-[40rem] text-center mb-10 font-alegreya text-[#203824]">
+        Welcome to EarthWise! We're here to help you learn and do your part for
+        the planet. Join us in making sustainable choices for a greener future.{" "}
       </h1>
-      <div className="bg-[#203824] px-16 py-8 rounded-xl">
+      <div className="bg-[#203824] px-5 sm:px-16 py-4 sm:py-8 rounded-xl min-w-[20rem] max-w-[36rem]">
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
             type="email"
@@ -63,9 +64,10 @@ function Login() {
             className="w-full p-2 rounded-md"
             required
           />
-          <button type="submit" 
-            className="text-3xl font-alegreya text-[#203824] px-40 py-4 mt-10 rounded-xl bg-[#D9D9D9]"
-            >
+          <button
+            type="submit"
+            className="text-xl md:text-3xl font-alegreya text-[#203824] px-20 sm:px-30 md:px-40 py-4 mt-10 rounded-xl bg-[#D9D9D9]"
+          >
             Log In
           </button>
         </form>

@@ -1,4 +1,4 @@
-import { useState, useEffect }  from 'react';
+import { useState }  from 'react';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import {
   MainContainer,
@@ -9,7 +9,7 @@ import {
   TypingIndicator,
 } from '@chatscope/chat-ui-kit-react';
 
-const API_KEY =""
+const API_KEY = import.meta.env.OPENAI_API_KEY;
 
 const App = () => {
   const [messages, setMessages] = useState([
